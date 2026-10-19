@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "nx serve",
-    "build": "nx build",
+    "build": "ng build --configuration production",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"
   },
