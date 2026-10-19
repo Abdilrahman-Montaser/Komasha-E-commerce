@@ -1,0 +1,77 @@
+<section class="work-section">
+  <div class="container">
+    <div class="work-header">
+      <span class="work-badge"><i class="fa-solid fa-flask-vial"></i> Angular 19</span>
+      <h2 class="work-title">Signals Playground</h2>
+      <p class="work-subtitle">Interactive demo of Angular Signals: <code>signal()</code>, <code>computed()</code>, and reactive state management</p>
+    </div>
+
+    <div class="signals-grid">
+
+      <!-- Name Signal -->
+      <div class="signal-card">
+        <div class="signal-card-header">
+          <span class="signal-type">WritableSignal&lt;string&gt;</span>
+          <span class="signal-label">name</span>
+        </div>
+        <div class="signal-value">{{ name() }}</div>
+        <div class="signal-meta">Updated with <code>.update()</code></div>
+        <button class="signal-btn" (click)="changeName()">
+          <i class="fa-solid fa-pen"></i> Change Name
+        </button>
+      </div>
+
+      <!-- Counter Signal -->
+      <div class="signal-card">
+        <div class="signal-card-header">
+          <span class="signal-type">WritableSignal&lt;number&gt;</span>
+          <span class="signal-label">counter</span>
+        </div>
+        <div class="signal-value">{{ counter() }}</div>
+        <div class="signal-meta">Updated with <code>.update(n => n + 1)</code></div>
+        <button class="signal-btn signal-btn--accent" (click)="changeCounter()">
+          <i class="fa-solid fa-plus"></i> Increment Counter
+        </button>
+      </div>
+
+      <!-- Computed Message -->
+      <div class="signal-card signal-card--computed">
+        <div class="signal-card-header">
+          <span class="signal-type signal-type--computed">Signal&lt;string&gt; (computed)</span>
+          <span class="signal-label">userMessage</span>
+        </div>
+        <div class="signal-value signal-value--sm">{{ userMessage() }}</div>
+        <div class="signal-meta">Derived from <code>name</code> + <code>counter</code> signals</div>
+      </div>
+
+      <!-- Total Price Computed -->
+      <div class="signal-card">
+        <div class="signal-card-header">
+          <span class="signal-type signal-type--computed">Signal&lt;number&gt; (computed)</span>
+          <span class="signal-label">totalPrice</span>
+        </div>
+        <div class="signal-value">{{ totalPrice() | number }}</div>
+        <div class="signal-meta">
+          <code>price({{ price() }})</code> × <code>quantity({{ quantitiy() }})</code>
+        </div>
+        <button class="signal-btn signal-btn--success" (click)="changeTotal()">
+          <i class="fa-solid fa-calculator"></i> Set Quantity = 3
+        </button>
+      </div>
+
+      <!-- Pure Function -->
+      <div class="signal-card signal-card--info">
+        <div class="signal-card-header">
+          <span class="signal-type">Function (no signal)</span>
+          <span class="signal-label">getNameFunction()</span>
+        </div>
+        <div class="signal-value">{{ getNameFunction() }}</div>
+        <div class="signal-meta">Called every change detection cycle — check console!</div>
+        <button class="signal-btn signal-btn--outline" (click)="0">
+          <i class="fa-solid fa-eye"></i> Trigger Change Detection
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<section class="details-section" *ngIf="product">
+  <div class="container">
+    <div class="details-card">
+      <!-- Image Column -->
+      <div class="details-image-col">
+        <div class="details-image-wrapper">
+          <img [src]="product?.imageCover" [alt]="product?.title" class="details-img">
+        </div>
+      </div>
+
+      <!-- Info Column -->
+      <div class="details-info-col">
+        <span class="details-category">{{ product?.category?.name | uppercase }}</span>
+        <h2 class="details-title">{{ product?.title | limitWords: 5 : true }}</h2>
+
+        <!-- Rating -->
+        <div class="details-rating">
+          <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star" style="color: var(--border-color)"></i>
+            <i class="fa-solid fa-star" style="color: var(--border-color)"></i>
+          </div>
+          <span class="rating-label">{{ product?.ratingsAverage }} / 5</span>
+          <span class="rating-count">({{ product?.ratingsQuantity }} reviews)</span>
+        </div>
+
+        <!-- Price -->
+        <div class="details-price">
+          {{ product?.price | currency: 'EGP ' : 'symbol' : '1.0-0' }}
+        </div>
+
+        <!-- Description -->
+        <p class="details-description">{{ product?.description }}</p>
+
+        <div class="details-divider"></div>
+
+        <!-- Actions -->
+        <div class="details-actions">
+          <button class="details-btn details-btn--primary" (click)="addPro()">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="details-btn details-btn--wishlist" (click)="addWishPro(product._id)">
+            <i class="fa-regular fa-heart"></i> Wishlist
+          </button>
+        </div>
+
+        <!-- Meta -->
+        <div class="details-meta">
+          <span class="meta-badge"><i class="fa-solid fa-shield-halved"></i> Secure Payment</span>
+          <span class="meta-badge"><i class="fa-solid fa-truck-fast"></i> Fast Delivery</span>
+          <span class="meta-badge"><i class="fa-solid fa-rotate-left"></i> Easy Returns</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

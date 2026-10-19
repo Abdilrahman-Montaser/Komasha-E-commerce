@@ -1,0 +1,75 @@
+/* ===== Site Nav ===== */
+.site-nav {
+  background: #fff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 12px rgba(79,70,229,0.06);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2px;
+  overflow-x: auto;
+}
+
+.nav-item {
+  flex-shrink: 0;
+}
+
+.nav-link {
+  display: block;
+  padding: 14px 18px;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 2.5px;
+  background: var(--primary);
+  border-radius: 2px 2px 0 0;
+  transition: left 0.25s ease, right 0.25s ease;
+}
+
+[dir="rtl"] .nav-link::after {
+  left: 50%;
+  right: 50%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  left: 10px;
+  right: 10px;
+}
+
+/* Special Signals Link */
+.nav-link--special {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-link--special::after {
+  background: var(--accent);
+}
+
+.nav-link--special.active,
+.nav-link--special:hover {
+  color: var(--accent-dark);
+}

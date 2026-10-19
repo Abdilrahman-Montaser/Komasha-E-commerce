@@ -1,0 +1,78 @@
+<section class="cart-section">
+  <div class="container">
+
+    <!-- Cart Header -->
+    <div class="cart-page-header">
+      <div class="cart-title-group">
+        <h2 class="cart-page-title">
+          <i class="fa-solid fa-cart-shopping"></i> Shopping Cart
+        </h2>
+        <span class="cart-count" *ngIf="cartPros.length > 0">{{ cartPros.length }} items</span>
+      </div>
+      <div class="cart-summary-row">
+        <span class="cart-total-label">Total:</span>
+        <span class="cart-total-value">{{ totalCartPrice | currency: 'EGP ' : 'symbol' : '1.0-0' }}</span>
+        <button class="clear-cart-btn" (click)="delProsCart()" *ngIf="cartPros.length > 0">
+          <i class="fa-solid fa-trash-can"></i> Clear Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty Cart -->
+    <div class="empty-cart" *ngIf="cartPros.length === 0">
+      <div class="empty-cart-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+      <h3>Your cart is empty</h3>
+      <p>Add some products to get started!</p>
+    </div>
+
+    <!-- Cart Items -->
+    <div class="cart-items" *ngIf="cartPros.length > 0">
+      <div class="cart-item" *ngFor="let pro of cartPros">
+        <!-- Product Image -->
+        <div class="cart-item-img-wrapper">
+          <img [src]="pro.product.imageCover" [alt]="pro.product.title" class="cart-item-img">
+        </div>
+
+        <!-- Product Info -->
+        <div class="cart-item-info">
+          <span class="cart-item-category">{{ pro.product.category.name | uppercase }}</span>
+          <h4 class="cart-item-title">{{ pro.product.title | limitWords: 4 : true }}</h4>
+          <span class="cart-item-price">{{ pro.price | currency: 'EGP ' : 'symbol' : '1.0-0' }}</span>
+        </div>
+
+        <!-- Quantity Controls -->
+        <div class="cart-qty-controls">
+          <button class="qty-btn qty-dec" (click)="pro.count = pro.count - 1; updSpecCart(pro.product._id, pro.count)">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <span class="qty-value">{{ pro.count }}</span>
+          <button class="qty-btn qty-inc" (click)="pro.count = pro.count + 1; updSpecCart(pro.product._id, pro.count)">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <!-- Item Total -->
+        <div class="cart-item-total">
+          {{ pro.price * pro.count | currency: 'EGP ' : 'symbol' : '1.0-0' }}
+        </div>
+
+        <!-- Remove -->
+        <button class="cart-remove-btn" (click)="delSpecProCart(pro.product._id)" title="Remove">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Checkout Button -->
+    <div class="cart-checkout" *ngIf="cartPros.length > 0">
+      <div class="checkout-total">
+        <span>Total Amount</span>
+        <strong>{{ totalCartPrice | currency: 'EGP ' : 'symbol' : '1.0-0' }}</strong>
+      </div>
+      <button class="checkout-btn">
+        <i class="fa-solid fa-credit-card"></i> Proceed to Checkout
+      </button>
+    </div>
+
+  </div>
+</section>

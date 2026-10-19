@@ -1,0 +1,50 @@
+<section class="wishlist-section">
+  <div class="container">
+
+    <!-- Page Header -->
+    <div class="wishlist-header">
+      <h2 class="wishlist-title">
+        <i class="fa-solid fa-heart"></i> My Wishlist
+      </h2>
+      <span class="wishlist-count" *ngIf="wishPros.length > 0">{{ wishPros.length }} items saved</span>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-wishlist" *ngIf="wishPros.length === 0">
+      <div class="empty-icon"><i class="fa-regular fa-heart"></i></div>
+      <h3>Your wishlist is empty</h3>
+      <p>Browse products and save your favorites here.</p>
+    </div>
+
+    <!-- Wishlist Grid -->
+    <div class="wishlist-grid" *ngIf="wishPros.length > 0">
+      <div class="wishlist-card" *ngFor="let pro of wishPros">
+
+        <!-- Product Image -->
+        <div class="wl-img-wrapper">
+          <img [src]="pro.imageCover" [alt]="pro.title" class="wl-img">
+        </div>
+
+        <!-- Product Info -->
+        <div class="wl-info">
+          <span class="wl-category">{{ pro.category.name | uppercase }}</span>
+          <h4 class="wl-title">{{ pro.title | limitWords: 4 : true }}</h4>
+          <p class="wl-desc">{{ pro.description | limitWords: 10 : true }}</p>
+          <span class="wl-price">{{ pro.price | currency: 'EGP ' : 'symbol' : '1.0-0' }}</span>
+        </div>
+
+        <!-- Actions -->
+        <div class="wl-actions">
+          <button class="wl-btn wl-add-cart" (click)="addToCard(pro._id)">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="wl-btn wl-remove" (click)="delWishPro(pro._id)">
+            <i class="fa-solid fa-heart-crack"></i> Remove
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,37 @@
+<nav class="site-nav" *ngIf="_AuthService.userIsLogin.value">
+  <div class="container">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="home" routerLinkActive="active">
+          {{ 'NAVBAR.HOME' | translate }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="about" routerLinkActive="active">
+          {{ 'NAVBAR.ABOUT' | translate }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="#">
+          {{ 'NAVBAR.CATIGORIES' | translate }}
+          <i class="fa-solid fa-angle-down ms-1"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="#">
+          {{ 'NAVBAR.SHOP' | translate }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="settings" routerLinkActive="active">
+          {{ 'NAVBAR.SETTINGS' | translate }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-link--special" routerLink="work" routerLinkActive="active">
+          <i class="fa-solid fa-flask-vial me-1"></i> Signals
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

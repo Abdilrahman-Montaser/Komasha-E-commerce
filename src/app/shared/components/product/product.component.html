@@ -1,0 +1,37 @@
+<div class="product-card">
+  <div class="card-image-wrapper">
+    <img [src]="product?.imageCover" class="card-img" [alt]="product?.title">
+    <div class="card-overlay"></div>
+    <div class="card-actions">
+      <button class="action-btn wishlist-btn" (click)="addWishPro(product?._id)" title="Add to Wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+      <button class="action-btn cart-btn" (click)="addPro()" title="Add to Cart">
+        <i class="fa-solid fa-cart-plus"></i>
+      </button>
+    </div>
+    <span class="category-badge">{{ product?.category?.name | uppercase }}</span>
+  </div>
+
+  <div class="card-body">
+    <h3 class="card-title" [routerLink]="['/product', product?._id]">
+      {{ product?.title | limitWords: 3 : true }}
+    </h3>
+    <div class="card-rating">
+      <div class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star" style="color: var(--border-color)"></i>
+        <i class="fa-solid fa-star" style="color: var(--border-color)"></i>
+      </div>
+      <span class="rating-value">({{ product?.ratingsAverage }})</span>
+    </div>
+    <div class="card-footer-row">
+      <span class="card-price">{{ product?.price | currency: 'EGP ' : 'symbol' : '1.0-0' }}</span>
+      <button class="add-to-cart-btn" (click)="addPro()">
+        <i class="fa-solid fa-bag-shopping"></i>
+      </button>
+    </div>
+  </div>
+</div>

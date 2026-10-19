@@ -1,0 +1,4 @@
+- [ ] Update AuthService to use BehaviorSubject for isLogin with initial false value
+- [ ] Add getter for isLogin observable in AuthService
+- [ ] Update NavComponent to import AsyncPipe and use the observable in template
+- [ ] Update LoginComponent to emit true to BehaviorSubject after successful login

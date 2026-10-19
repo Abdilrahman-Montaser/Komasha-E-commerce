@@ -1,0 +1,57 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+
+      <!-- Logo -->
+      <div class="logo">
+        <a routerLink="home" class="logo-link">
+          <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
+          <span class="logo-text">Digitic</span>
+        </a>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="header-search" *ngIf="_AuthService.userIsLogin.value">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" class="search-input" placeholder="Search products...">
+      </div>
+
+      <!-- Right Actions -->
+      <div class="header-actions">
+
+        <!-- Language Toggle -->
+        <div class="lang-toggle">
+          <button class="lang-btn" (click)="switchLang('en')">EN</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" (click)="switchLang('ar')">ع</button>
+        </div>
+
+        <!-- Wishlist (logged in) -->
+        <a *ngIf="_AuthService.userIsLogin.value" routerLink="wishlist" class="header-icon-btn" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </a>
+
+        <!-- Cart (logged in) -->
+        <a *ngIf="_AuthService.userIsLogin.value" routerLink="cart" class="header-icon-btn cart-icon-btn" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" *ngIf="totalNumCartPros > 0">{{ totalNumCartPros }}</span>
+        </a>
+
+        <!-- Register (logged out) -->
+        <a *ngIf="!_AuthService.userIsLogin.value" routerLink="register" class="auth-btn outline-btn">
+          <i class="fa-regular fa-user"></i> Register
+        </a>
+
+        <!-- Login (logged out) -->
+        <a *ngIf="!_AuthService.userIsLogin.value" routerLink="login" class="auth-btn primary-btn">
+          <i class="fa-solid fa-right-to-bracket"></i> Login
+        </a>
+
+        <!-- Logout (logged in) -->
+        <button *ngIf="_AuthService.userIsLogin.value" (click)="_AuthService.logOut()" class="auth-btn danger-btn">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

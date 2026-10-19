@@ -1,0 +1,8 @@
+.slider-section {
+  padding: 40px 0 20px;
+  background: var(--surface-2);
+}
+
+.slider-item-wrapper {
+  padding: 8px 10px 16px;
+}
