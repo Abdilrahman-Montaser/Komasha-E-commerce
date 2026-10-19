@@ -1,59 +1,81 @@
-# App
+# Clothes E-commerce
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.17.
+An Angular storefront for browsing clothing products and managing a shopping cart and wishlist. The app includes account registration and sign-in, product search and details, and a responsive interface with English and Arabic language support.
 
-## Development server
+Product and account data are provided by the [RouteMisr E-commerce API](https://ecommerce.routemisr.com/). An internet connection and a valid account for that service are needed to use authenticated features.
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
-```
+- Browse and search the product collection
+- View product details
+- Register and sign in, with token-based authentication
+- Add products to the cart, update quantities, and remove items
+- Save products to a wishlist
+- Switch between English and Arabic, including right-to-left layout for Arabic
+- Loading indicators and success notifications
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Built with
 
-## Code scaffolding
+- Angular 19 and TypeScript
+- Nx
+- Bootstrap and Font Awesome
+- RxJS
+- ngx-translate
+- RouteMisr E-commerce API
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Getting started
 
-```bash
-ng generate component component-name
-```
+### Requirements
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Node.js and npm
+- Internet access to connect to the RouteMisr API
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Install and run
 
 ```bash
-ng test
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+cd YOUR-REPOSITORY
+npm install
+npm start
 ```
 
-## Running end-to-end tests
+Open [http://localhost:4200](http://localhost:4200) in your browser. Replace `YOUR-USERNAME` and `YOUR-REPOSITORY` with the GitHub account and repository name after creating the repository.
 
-For end-to-end (e2e) testing, run:
+To use authenticated features, register through the app or sign in with an account supported by the API.
+
+## Available scripts
+
+| Command | Description |
+| --- | --- |
+| `npm start` | Start the local development server |
+| `npm run build` | Build the production application |
+| `npm test` | Run the unit tests |
+| `npm run watch` | Rebuild when source files change |
+
+Production build output is written to `dist/app`.
+
+## Project structure
+
+```text
+src/
+  app/
+    core/       Shared services, guards, and HTTP interceptors
+    features/   Authentication, products, cart, wishlist, and other pages
+    layout/     Application header and navigation
+    shared/     Reusable components and pipes
+  assets/       Static application assets
+```
+
+## Uploading this project to GitHub
+
+Create an empty repository on GitHub, then run these commands from the project directory. Replace the URL with the URL of your new repository:
 
 ```bash
-ng e2e
+git add .
+git commit -m "Add clothes e-commerce app"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git push -u origin main
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Do not upload `node_modules` or generated build output; install dependencies from `package-lock.json` with `npm install` after cloning.
